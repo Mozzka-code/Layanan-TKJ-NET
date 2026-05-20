@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKJ-Net | Cyber Protocol</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="crt-overlay"></div>
+
+    <nav class="cyber-nav">
+        <div class="nav-content">
+            <div class="nav-brand">
+            <div class="logo-box">
+                <img class="logo-img" src="logo.png" alt="Logo TKJ-NET">
+            </div>
+            <div class="logo glitch-text" data-text="TKJ-NET_">TKJ-NET_</div>
+        </div>
+        <div class="nav-menu">
+            <a href="#hero">// BERANDA</a>
+            <a href="#paket">// TRANSMISI</a>
+            <a href="#pesan" class="btn-cyber-small">UPLINK_</a>
+        </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="cyber-hero">
+        <div class="hero-wrapper">
+            <div class="sys-badge">SYS.STATUS: ONLINE 🟢</div>
+            <h1 class="glitch-text" data-text="KONEKSI TANPA BATAS">KONEKSI TANPA BATAS</h1>
+            <p class="typewriter">Infrastruktur jaringan berkecepatan tinggi. Stabil. Tanpa jejak.</p>
+            <a href="#paket" class="btn-cyber">INISIALISASI PAKET <span class="arrow">>></span></a>
+        </div>
+    </section>
+
+    <section id="paket" class="cyber-packages">
+        <h2 class="section-title"><span class="red-slash">//</span> TERSEDIA_NODE <span class="red-slash">//</span></h2>
+        
+        <div class="grid-container">
+            <div class="cyber-card">
+                <div class="card-border"></div>
+                <div class="card-content">
+                    <span class="badge">LVL.1</span>
+                    <h3>BRONZE</h3>
+                    <div class="speed">10 Mbps</div>
+                    <div class="price">Rp 200.000<span>/bln</span></div>
+                    <ul>
+                        <li>> Akses 1-3 Device</li>
+                        <li>> Kuota Unlimited</li>
+                        <li>> Latensi Standar</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cyber-card active-node">
+                <div class="card-border"></div>
+                <div class="card-content">
+                    <span class="badge red">RECOMMENDED</span>
+                    <h3>SILVER</h3>
+                    <div class="speed">20 Mbps</div>
+                    <div class="price">Rp 350.000<span>/bln</span></div>
+                    <ul>
+                        <li>> Akses 4-7 Device</li>
+                        <li>> Bandwidth Simetris</li>
+                        <li>> Anti-DDoS Basic</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cyber-card">
+                <div class="card-border"></div>
+                <div class="card-content">
+                    <span class="badge">LVL.3</span>
+                    <h3>GOLD</h3>
+                    <div class="speed">50 Mbps</div>
+                    <div class="price">Rp 600.000<span>/bln</span></div>
+                    <ul>
+                        <li>> Akses > 8 Device</li>
+                        <li>> IP Publik Terdedikasi</li>
+                        <li>> Prioritas Routing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pesan" class="cyber-form-section">
+        <div class="form-box">
+            <div class="form-header">
+                <h2>> DATA_UPLINK</h2>
+                <div class="deco-line"></div>
+            </div>
+
+            <form id="cyberForm">
+                <div class="input-container">
+                    <input type="text" id="nama" placeholder=" " required>
+                    <label for="nama">IDENTITAS_PENGGUNA (NAMA)</label>
+                    <div class="input-line"></div>
+                </div>
+
+                <div class="input-container">
+                    <textarea id="alamat" rows="3" placeholder=" " required></textarea>
+                    <label for="alamat">KOORDINAT_LOKASI (ALAMAT)</label>
+                    <div class="input-line"></div>
+                </div>
+
+                <div class="input-container select-box">
+                    <select id="paketSelect" required>
+                        <option value="" disabled selected>-- PILIH FREKUENSI (PAKET) --</option>
+                        <option value="200000">BRONZE (10 Mbps) - Rp 200.000</option>
+                        <option value="350000">SILVER (20 Mbps) - Rp 350.000</option>
+                        <option value="600000">GOLD (50 Mbps) - Rp 600.000</option>
+                    </select>
+                    <div class="input-line"></div>
+                </div>
+
+                <div class="terminal-output">
+                    <div class="calc-row"><span>> Biaya_Langganan:</span> <span id="outPaket">Rp 0</span></div>
+                    <div class="calc-row"><span>> Biaya_Instalasi:</span> <span id="outInstalasi">Rp 0</span></div>
+                    <div class="calc-row total-row"><span>> TOTAL_ESTIMASI:</span> <span id="outTotal" class="red-text">Rp 0</span></div>
+                </div>
+
+                <div class="action-buttons">
+                    <button type="button" id="btnHitung" class="btn-cyber-outline">[ HITUNG_DATA ]</button>
+                    <button type="submit" id="btnKirim" class="btn-cyber-solid">[ EKSEKUSI_PESANAN ]</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="cyber-footer">
+        <p>TKJ-NET CORE SYSTEM // V.2026</p>
+        <p class="admin-note">SUPERVISORY: BPK. BAGUS SASANGKO | STATUS: SECURE</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

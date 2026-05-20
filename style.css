@@ -1,0 +1,235 @@
+/* --- RESET & VARIABLES --- */
+:root {
+    --bg-dark: #050505;
+    --bg-panel: #111;
+    --neon-red: #ff003c;
+    --neon-blue: #00f0ff;
+    --text-main: #f0f0f0;
+    --font-mono: 'Courier New', Courier, monospace;
+    --font-sans: 'Arial Black', Impact, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-mono);
+    overflow-x: hidden;
+}
+
+/* --- CRT SCANLINE OVERLAY --- */
+.crt-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* --- GLITCH TEXT EFFECT --- */
+.glitch-text {
+    position: relative;
+    font-family: var(--font-sans);
+    color: var(--text-main);
+}
+.glitch-text::before, .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    opacity: 0.8;
+}
+.glitch-text::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--neon-red);
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+.glitch-text::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--neon-blue);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+@keyframes glitch-anim-1 {
+    0% { clip-path: inset(20% 0 80% 0); }
+    50% { clip-path: inset(50% 0 30% 0); }
+    100% { clip-path: inset(80% 0 5% 0); }
+}
+@keyframes glitch-anim-2 {
+    0% { clip-path: inset(10% 0 60% 0); }
+    50% { clip-path: inset(30% 0 20% 0); }
+    100% { clip-path: inset(70% 0 10% 0); }
+}
+
+/* --- NAVBAR --- */
+.cyber-nav {
+    position: fixed; top: 0; width: 100%;
+    background: rgba(5, 5, 5, 0.9);
+    border-bottom: 2px solid var(--neon-red);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+.nav-content {
+    max-width: 1200px; margin: 0 auto;
+    padding: 15px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.nav-brand {
+    display: flex; align-items: center; gap: 12px;
+}
+.logo-box {
+    width: 40px; height: 40px;
+    border: 2px solid var(--neon-red);
+    background: rgba(255, 0, 60, 0.1);
+    box-shadow: 0 0 10px rgba(255, 0, 60, 0.2);
+    border-radius: 8px;
+    display: flex; justify-content: center; align-items: center;
+    overflow: hidden;
+}
+.logo-img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+}
+.logo { font-size: 1.5rem; letter-spacing: 2px; }
+.nav-menu a {
+    color: var(--text-main); text-decoration: none;
+    margin-left: 20px; font-weight: bold; transition: 0.3s;
+}
+.nav-menu a:hover { color: var(--neon-red); }
+
+/* --- HERO SECTION --- */
+.cyber-hero {
+    height: 100vh; display: flex;
+    justify-content: center; align-items: center;
+    background: radial-gradient(circle at center, #1a0005 0%, var(--bg-dark) 70%);
+}
+.hero-wrapper { text-align: center; }
+.sys-badge {
+    display: inline-block; padding: 5px 15px;
+    border: 1px solid var(--neon-red); color: var(--neon-red);
+    margin-bottom: 20px; font-size: 0.8rem;
+}
+.cyber-hero h1 { font-size: 4rem; letter-spacing: 5px; margin-bottom: 20px; }
+
+/* TYPEWRITER EFFECT */
+.typewriter {
+    overflow: hidden; border-right: .15em solid var(--neon-red);
+    white-space: nowrap; margin: 0 auto 40px auto;
+    letter-spacing: .15em; font-size: 1.2rem;
+    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+}
+@keyframes typing { from { width: 0 } to { width: 100% } }
+@keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--neon-red); } }
+
+/* --- BUTTONS --- */
+.btn-cyber, .btn-cyber-solid, .btn-cyber-outline {
+    display: inline-block; padding: 15px 30px;
+    font-family: var(--font-sans); font-size: 1.2rem;
+    text-decoration: none; cursor: pointer; text-transform: uppercase;
+    clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+    transition: 0.2s; border: none; outline: none;
+}
+.btn-cyber, .btn-cyber-solid {
+    background-color: var(--neon-red); color: #fff;
+}
+.btn-cyber:hover, .btn-cyber-solid:hover {
+    background-color: #fff; color: var(--neon-red); box-shadow: 0 0 20px var(--neon-red);
+}
+.btn-cyber-outline {
+    background-color: transparent; border: 2px solid var(--neon-red); color: var(--neon-red);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Override clip for outline to work smoothly */
+}
+.btn-cyber-outline:hover { background-color: rgba(255,0,60,0.2); }
+
+/* --- PACKAGES --- */
+.cyber-packages { padding: 100px 20px; }
+.section-title { text-align: center; font-size: 2.5rem; font-family: var(--font-sans); margin-bottom: 50px; }
+.red-slash { color: var(--neon-red); }
+.grid-container {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; max-width: 1100px; margin: 0 auto;
+}
+.cyber-card {
+    position: relative; background: var(--bg-panel);
+    padding: 30px; clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%);
+    transition: 0.3s;
+}
+.card-border {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    border: 1px solid #333; z-index: 1; pointer-events: none;
+}
+.cyber-card:hover { transform: translateY(-10px); }
+.cyber-card:hover .card-border { border-color: var(--neon-red); box-shadow: inset 0 0 15px rgba(255,0,60,0.3); }
+.active-node .card-border { border-color: var(--neon-red); }
+.card-content { position: relative; z-index: 2; }
+.badge { background: #333; padding: 3px 8px; font-size: 0.8rem; }
+.badge.red { background: var(--neon-red); color: white; }
+.cyber-card h3 { font-family: var(--font-sans); font-size: 2rem; margin: 15px 0; }
+.speed { font-size: 2.5rem; font-weight: bold; color: var(--neon-red); margin-bottom: 10px; }
+.price { font-size: 1.2rem; margin-bottom: 20px; border-bottom: 1px dashed #555; padding-bottom: 15px; }
+.cyber-card ul { list-style: none; }
+.cyber-card li { margin-bottom: 10px; opacity: 0.8; }
+
+/* --- FORM --- */
+.cyber-form-section { padding: 100px 20px; background: #0a0a0a; }
+.form-box {
+    max-width: 600px; margin: 0 auto;
+    background: var(--bg-panel); padding: 40px;
+    border-left: 4px solid var(--neon-red);
+}
+.form-header h2 { font-family: var(--font-sans); margin-bottom: 5px; }
+.deco-line { width: 50px; height: 3px; background: var(--neon-red); margin-bottom: 30px; }
+
+.input-container { position: relative; margin-bottom: 35px; }
+.input-container input, .input-container textarea, .input-container select {
+    width: 100%; background: transparent; border: none;
+    color: white; font-family: var(--font-mono); font-size: 1rem;
+    padding: 10px 0; outline: none; z-index: 2; position: relative;
+}
+.input-container label {
+    position: absolute; top: 10px; left: 0; color: #666;
+    transition: 0.3s ease; pointer-events: none;
+}
+.input-container input:focus ~ label, .input-container textarea:focus ~ label,
+.input-container input:not(:placeholder-shown) ~ label, .input-container textarea:not(:placeholder-shown) ~ label {
+    top: -20px; font-size: 0.8rem; color: var(--neon-red);
+}
+.input-line {
+    position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: #333;
+}
+.input-container input:focus ~ .input-line, .input-container textarea:focus ~ .input-line, .input-container select:focus ~ .input-line {
+    background: var(--neon-red); height: 2px;
+}
+.select-box select { color: var(--neon-red); cursor: pointer; }
+
+/* TERMINAL OUTPUT */
+.terminal-output {
+    background: #000; border: 1px solid #333;
+    padding: 20px; margin-bottom: 30px; font-size: 0.9rem;
+}
+.calc-row { display: flex; justify-content: space-between; margin-bottom: 10px; opacity: 0.7; }
+.total-row { opacity: 1; font-weight: bold; font-size: 1.2rem; margin-top: 15px; border-top: 1px dashed #333; padding-top: 10px;}
+.red-text { color: var(--neon-red); }
+
+.action-buttons { display: flex; gap: 15px; }
+.action-buttons button { flex: 1; font-size: 1rem; padding: 15px; }
+
+/* --- FOOTER --- */
+.cyber-footer {
+    text-align: center; padding: 30px; background: #000;
+    border-top: 1px solid #333;
+}
+.admin-note { font-size: 0.7rem; color: #555; margin-top: 5px; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .nav-menu { display: none; } /* Hide di HP sesuai konsep awal */
+    .cyber-hero h1 { font-size: 2.5rem; }
+    .action-buttons { flex-direction: column; }
+}
