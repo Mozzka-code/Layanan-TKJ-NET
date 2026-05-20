@@ -227,9 +227,38 @@ body {
 }
 .admin-note { font-size: 0.7rem; color: #555; margin-top: 5px; }
 
-/* RESPONSIVE */
+/* --- RESPONSIVE DESKTOP & MOBILE --- */
 @media (max-width: 768px) {
-    .nav-menu { display: none; } /* Hide di HP sesuai konsep awal */
-    .cyber-hero h1 { font-size: 2.5rem; }
-    .action-buttons { flex-direction: column; }
+    /* Menyembunyikan menu navigasi desktop */
+    .nav-menu { 
+        display: none; 
+    } 
+    
+    /* Mengecilkan ukuran teks utama agar muat di layar HP */
+    .cyber-hero h1 { 
+        font-size: 2rem; 
+        letter-spacing: 2px;
+        padding: 0 10px;
+    }
+
+    /* Memperbaiki teks deskripsi agar bisa turun baris (wrap) */
+    .typewriter {
+        white-space: normal; /* Mengizinkan teks turun ke baris baru */
+        font-size: 0.9rem;
+        width: 100%;
+        border-right: none; /* Menghilangkan kursor kedap-kedip di HP */
+        animation: none; /* Mematikan animasi ngetik di HP agar layout rapi */
+        padding: 0 15px;
+        margin-bottom: 30px;
+    }
+
+    /* Menyesuaikan tombol agar bertumpuk dan tidak terlalu besar */
+    .action-buttons { 
+        flex-direction: column; 
+    }
+    
+    .btn-cyber {
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
 }
